@@ -10,8 +10,9 @@ class CategoryController extends Controller
 {
     public function show(){
         $category = Category::all();
-        return view('admin.category.show', compact('category'));
-    }    
+        $active = "category";
+        return view('admin.category.show', compact('category', 'active'));
+    }
 
     public function store(Request $req){
         $validator = $validator->make($req->all(),[
@@ -55,5 +56,5 @@ class CategoryController extends Controller
         Category::findOrFail($id)->delete();
         return redirect()->back();
     }
-    
+
 }

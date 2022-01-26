@@ -10,8 +10,9 @@ class TrainerController extends Controller
 {
     public function show(){
         $trainer = Trainer::all();
-        return view('admin.trainer.show', compact('trainer'));
-    }    
+        $active = "trainer";
+        return view('admin.trainer.show', compact('trainer', 'active'));
+    }
 
     public function store(Request $req){
         $validator = $validator->make($req->all(),[

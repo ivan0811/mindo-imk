@@ -11,8 +11,9 @@ class UserController extends Controller
 {
     public function show(){
         $user = User::all();
-        return view('admin.user.show', compact('user'));
-    }    
+        $active = "user";
+        return view('admin.user.show', compact('user', 'active'));
+    }
 
     public function create(){
         $training = Training::all();
@@ -20,13 +21,13 @@ class UserController extends Controller
     }
 
     public function store(Request $req){
-        $validator = $validator->make($req->all(),[     
+        $validator = Validator::make($req->all(),[
             'training_id' => 'required',
             'name' => 'required',
-            'username' => 'required',            
+            'username' => 'required',
             'email' => 'required|unique:trainers',
             'no_wa' => 'required',
-            'password' => 'required|confirmed|min:8'            
+            'password' => 'required|confirmed|min:8'
         ]);
 
         if($validator->fails()){
@@ -35,12 +36,12 @@ class UserController extends Controller
 
         $user = User::create([
             'name' => $req->name,
-            'username' => $req->username,            
+            'username' => $req->username,
             'email' => $req->email,
             'no_wa' => $req->no_wa,
             'password' => Hash::make($req->password)
-        ]);     
-        
+        ]);
+
         ParticipantTraining::create([
             'user_id' => $req->user_id,
             'training_id' => $req->training_id
@@ -59,10 +60,10 @@ class UserController extends Controller
         $validator = $validator->make($req->all(),[
             'training_id' => 'required',
             'name' => 'required',
-            'username' => 'required',            
+            'username' => 'required',
             'email' => 'required|unique:trainers',
             'no_wa' => 'required',
-            'password' => 'required|confirmed'            
+            'password' => 'required|confirmed'
         ]);
 
         if($validator->fails()){
@@ -70,7 +71,7 @@ class UserController extends Controller
         }
 
         $user = User::findOrFail($id);
-        $user->name = $req->name;        
+        $user->name = $req->name;
         $user->username = $req->username;
         $user->email = $req->email;
         $user->no_wa = $req->no_wa;

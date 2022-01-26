@@ -10,8 +10,9 @@ class TrainingController extends Controller
 {
     public function show(){
         $training = Training::all();
-        return view('admin.training.show', compact('training'));
-    }    
+        $active = "training";
+        return view('admin.training.show', compact('training', 'active'));
+    }
 
     public function create(){
         $category = Category::all();
@@ -20,7 +21,7 @@ class TrainingController extends Controller
     }
 
     public function store(Request $req){
-        $validator = $validator->make($req->all(),[
+        $validator = Validator::make($req->all(),[
             'trainer_id' => 'required',
             'category_id' => 'required|unique:trainers',
             'name' => 'required|unique:trainings',
@@ -70,7 +71,7 @@ class TrainingController extends Controller
 
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
-        }        
+        }
 
         if($req->cover){
             $cover = $req->file('cover')->hashName();
@@ -83,7 +84,7 @@ class TrainingController extends Controller
         $training->category_id = $req->category_id;
         $training->name = $req->name;
         $training->type = $req->type;
-        $training->description = $req->description;        
+        $training->description = $req->description;
         $training->cover = $cover;
         $training->price = $req->price;
         $training->save();
