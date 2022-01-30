@@ -21,7 +21,7 @@ class CreateParticipantTrainingsTable extends Migration
 
             $table->foreign('training_id')
             ->references('id')
-            ->on('trainers')
+            ->on('trainings')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 

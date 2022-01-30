@@ -1,0 +1,160 @@
+body{
+    background-color: #FCFDFF;
+}
+
+
+#cover1-caption{
+    position: absolute;
+    left: 10%;    
+    width: 65%;
+    text-align: left;    
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+}
+
+.overlay{
+    filter:blur(10px);
+}
+
+#pelatihan-terbaru{
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+#pelatihan-terbaru > p.sub-header2{
+    width: 30%;
+    margin: auto;    
+}
+
+div.button-bottom{
+    margin-top: 5% !important;
+}
+
+#pelatihan-unggulan{
+    padding-top: 10%;
+    padding-bottom: 10%;
+    background-color: #F9FBFF;
+}
+
+#pelatihan-unggulan > div > p.sub-header2{
+    width: 50%;    
+}
+
+#about-mindo{
+    padding: 10% 0;
+}
+
+#about-mindo > div > p.sub-header2{
+    width: 30%;
+    margin: auto;        
+}
+
+.btn-custom{
+    color: white;
+    background-color: #213A5E;
+    padding: 10px 25px;
+    border-radius: 10px;
+}
+
+.btn-custom:hover{
+    color: white;
+    background-color: #2e5187;    
+}
+
+.btn-custom-outline{   
+    border: 1px solid #213A5E;
+    padding: 10px 25px;
+    border-radius: 10px;
+}
+
+.btn-custom-outline:hover{   
+    background-color: #213A5E;
+    color: white;
+}
+
+.nav-item .nav-link.active{
+    color: #213A5E !important;
+    font-weight: 600;
+}
+
+.nav-item .nav-link{
+    color: #000000 !important;    
+}
+
+a.card-training{
+    color: #000000;
+}
+
+a.card-training > div.card:hover{
+    filter: drop-shadow(0px 26px 44px rgba(172, 171, 171, 0.25));
+}
+
+#about-mindo .row > div{
+    width: max-content;
+}
+
+footer{
+    background-color: #213A5E;
+    color: white;  
+    margin-top: 10%;  
+}
+
+footer > div:nth-child(1){
+    padding-bottom: 50px;
+}
+
+footer .footer-link{
+    margin-top: 4rem !important;
+}
+
+footer .copyright{
+    background-color: #25B34B;
+    height: 78px;    
+}
+
+footer .footer-link ul{
+    list-style: none;
+    padding: 0;    
+}
+
+footer .footer-link li a{
+    color: white !important;
+}
+
+.icon-button{
+    color: #213A5E;
+    font-size: 15px;
+    border-radius: 60%;
+    background-color: white;
+    padding: 5px 8px;
+    margin-right: 10px;
+}
+
+.custom-input-search{
+    background-color: white;
+    border-radius: 5px;
+    width: 70%;
+}
+
+.custom-input-search span{
+    color: #545454;    
+    border-right: 2px solid #A0A0A0;
+    padding: 10px 20px;
+    font-size: 20px;    
+    margin: 14px 0px;    
+}
+
+.custom-input-search input{
+    border: none;
+    margin-left: 20px;
+    width: 80%;
+}
+
+.custom-input-search input:focus{
+    outline: none;
+}
+
+#pelatihan-kategori{
+    padding: 5% 0;
+}

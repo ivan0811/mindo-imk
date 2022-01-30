@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Training extends Model
 {
     use HasFactory;
-    protected $fillable = ['trainer_id', 'category_id', 'name', 'type', 'description', 'cover', 'price'];
+    protected $fillable = ['trainer_id', 'category_id', 'name', 'slug', 'type', 'description', 'cover', 'price'];
     
     public function trainer()
     {
@@ -17,7 +17,7 @@ class Training extends Model
 
     public function category()
     {
-        return $this->belongsTo(Trainer::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function participantTraining()
