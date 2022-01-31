@@ -9,7 +9,7 @@ class ParticipantTraining extends Model
 {
     use HasFactory;
     protected $fillable = ['training_id', 'user_id'];
-    
+
     public function training()
     {
         return $this->belongsTo(Training::class);

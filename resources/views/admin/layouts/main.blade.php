@@ -57,15 +57,15 @@
       </li> --}}
 
       <!-- Messages Dropdown Menu -->
-      <li class="nav-item">                        
+      <li class="nav-item">
           <p class="nav-link mb-0">{{\Auth::user()->username}}</p>
-          {{-- <span class="badge badge-danger navbar-badge">3</span> --}}        
+          {{-- <span class="badge badge-danger navbar-badge">3</span> --}}
       </li>
-      <li class="nav-item">        
+      <li class="nav-item">
         <a href="#" class="nav-link" onclick="document.getElementById('logout-form').submit()">Logout</a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-          @csrf          
-        </form>        
+          @csrf
+        </form>
       </li>
     </ul>
   </nav>
@@ -75,7 +75,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="../../index3.html" class="brand-link">
-      <img src="../../dist/img/AdminLTELogo.png" alt="Logo" class="brand-text text-center" style="opacity: .8; margin:0 32.5% 0 32.5%;">
+      <img src="{{ asset('asset/image/favicon.png') }}" alt="Logo" class="brand-text text-center" style="width: 25%; height: 25%; margin:0 32.5%;">
       {{-- <span class="brand-text font-weight-light">AdminLTE 3</span> --}}
     </a>
 
@@ -139,7 +139,7 @@
           </li> --}}
           <li class="nav-item">
             <a href="{{ route('show_user') }}" class="nav-link {{ (Request::segment(1) === "pengguna" ? 'active' : '') }}">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas"><img src="{{asset('asset/image/icon1.png')}}" alt=""></i>
               <p>
                 Data Pengguna
               </p>
@@ -147,7 +147,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('show_training') }}" class="nav-link {{ (Request::segment(1) === "pelatihan" ? 'active' : '') }}">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas"><img src="{{asset('asset/image/icon2.png')}}" alt=""></i>
               <p>
                 Data Pelatihan
               </p>
@@ -155,7 +155,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('show_trainer') }}" class="nav-link {{ (Request::segment(1) === "pengajar" ? 'active' : '') }}">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas"><img src="{{asset('asset/image/icon3.png')}}" alt=""></i>
               <p>
                 Data Pengajar
               </p>
@@ -163,7 +163,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('laporan_peserta') }}" class="nav-link {{ (Request::segment(1) === "laporan" ? 'active' : '') }}">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas"><img src="{{asset('asset/image/icon4.png')}}" alt=""></i>
               <p>
                 Laporan Peserta
               </p>
@@ -171,7 +171,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('show_category') }}" class="nav-link {{ (Request::segment(1) === "kategori" ? 'active' : '') }}">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas"><img src="{{asset('asset/image/icon5.png')}}" alt=""></i>
               <p>
                 Kategori
               </p>
@@ -204,7 +204,7 @@
 <script src="{{asset('plugins/toastr/toastr.min.js')}}"></script>
 @stack('scripts')
 @if (session('toast'))
-  {!! session('toast') !!}    
+  {!! session('toast') !!}
 @endif
 </body>
 </html>

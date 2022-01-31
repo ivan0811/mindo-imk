@@ -9,7 +9,7 @@ class Trainer extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'email', 'no_wa'];
-    
+
     public function training()
     {
         return $this->hasMany(Training::class, 'training_id');

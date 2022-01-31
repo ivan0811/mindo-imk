@@ -9,7 +9,7 @@ class Training extends Model
 {
     use HasFactory;
     protected $fillable = ['trainer_id', 'category_id', 'name', 'slug', 'type', 'description', 'cover', 'price'];
-    
+
     public function trainer()
     {
         return $this->belongsTo(Trainer::class);

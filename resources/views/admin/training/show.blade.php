@@ -13,16 +13,20 @@
                 <h1 class="card-title">Data Pelatihan</h1>
 
                 <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 350px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Cari Pelatihan">
+                    <div class="card-tools">
+                        <form action="{{route('search_training')}}" method="GET">
+                          <div class="input-group input-group-sm" style="width: 350px;">
+                          <input type="text" name="q" class="form-control float-right" placeholder="Cari Pelatihan">
 
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                      </button>
-                      <a href="{{ route('create_training') }}" class="btn btn-info ml-3" style="border-radius:0; border:none;">Tambah Data</a>
+                          <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                              <i class="fas fa-search"></i>
+                            </button>
+                            <a href="{{ route('create_training') }}" class="btn btn-info ml-3" style="border-radius:0; border:none;">Tambah Data</a>
+                          </div>
+                        </div>
+                        </form>
                     </div>
-                  </div>
                 </div>
               </div>
             <div class="card">
@@ -31,7 +35,7 @@
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th class="col-1">No</th>                      
+                      <th class="col-1">No</th>
                       <th class="col-2">Kategori</th>
                       <th class="col-2">Nama Pengajar</th>
                       <th class="col-2">Nama Pelatihan</th>
@@ -41,12 +45,12 @@
                       <th class="col-2">Aksi</th>
                     </tr>
                   </thead>
-                  <tbody>               
+                  <tbody>
                     @php
                         $no = 1;
-                    @endphp     
+                    @endphp
                     @foreach ($training as $item)
-                      <tr>                                            
+                      <tr>
                         <td>{{$no}}</td>
                         <td>{{$item->category->name}}</td>
                         <td>{{strlen($item->trainer->name) > 20 ? substr($item->trainer->name, 0, 20).'...' : $item->trainer->name}}</td>
@@ -62,27 +66,27 @@
                               <a href="{{route('edit_training', $item->id)}}" class="btn btn-success">Ubah</a>
                               <button type="submit" class="btn btn-danger">Hapus</button>
                             </td>
-                          </form>                          
+                          </form>
                       </tr>
                       @php
                           $no++;
                       @endphp
-                    @endforeach                    
+                    @endforeach
                   </tbody>
                 </table>
               </div>
               <!-- /.card-body -->
               @php
-                  $currentPage = $training->currentPage(); 
+                  $currentPage = $training->currentPage();
                   $url = '/pelatihan?page=';
-              @endphp  
+              @endphp
               @if ($training->lastPage() > 1)
               <div class="card-footer clearfix">
-                <ul class="pagination pagination-sm m-0 float-right">                                    
+                <ul class="pagination pagination-sm m-0 float-right">
                   <li class="page-item {{$currentPage == 1 ? 'disabled' : ''}}"><a class="page-link" href="{{$url.$currentPage-1}}">&laquo;</a></li>
-                  @for ($i = 1; $i <= $training->lastPage(); $i++)                                                      
-                    <li class="page-item {{$currentPage == $i ? 'active' : ''}}"><a class="page-link" href="{{$url.$i}}">{{$i}}</a></li>                  
-                  @endfor                  
+                  @for ($i = 1; $i <= $training->lastPage(); $i++)
+                    <li class="page-item {{$currentPage == $i ? 'active' : ''}}"><a class="page-link" href="{{$url.$i}}">{{$i}}</a></li>
+                  @endfor
                   <li class="page-item {{$currentPage == $training->lastPage() ? 'disabled' : ''}}"><a class="page-link" href="{{$url.$currentPage+1}}">&raquo;</a></li>
                 </ul>
               </div>

@@ -84,8 +84,8 @@
                   </div>
                   <div class="form-group">
                     <label>Pilih Hak Akses</label>
-                    <select class="form-control" id="role" name="role">                      
-                      <option value="peserta" @if ($user->role == 'peserta') selected @endif>Peserta</option>        
+                    <select class="form-control" id="role" name="role">
+                      <option value="peserta" @if ($user->role == 'peserta') selected @endif>Peserta</option>
                       <option value="admin" @if ($user->role == 'admin') selected @endif>Admin</option>
                     </select>
                   </div>
@@ -99,7 +99,7 @@
                     @enderror
                   </div>
                   @php
-                      $training_id = [];                      
+                      $training_id = [];
                       if($user->role == 'peserta'){
                         $training_id = $user->participantTraining;
                       }
@@ -107,33 +107,33 @@
                   @if (count($training_id) > 0)
                       @foreach ($training_id as $item)
                         <input type="hidden" name="old_training_id[]" value="{{$item->id}}">
-                      @endforeach                      
+                      @endforeach
                   @endif
                   <div id="peserta_pelatihan" class="form-group">
                     <label for="training_id">Riwayat Mengikuti Pelatihan</label>
                     <select class="select2 @error('training_id') is-invalid @enderror" multiple="multiple" id="training_id" data-placeholder="Pilih Pelatihan" style="width: 100%;" name="training_id[]">
-                      @foreach ($training as $key => $item)      
+                      @foreach ($training as $key => $item)
                           @php
                               $skip = false;
-                          @endphp                                          
+                          @endphp
                           @foreach ($training_id as $item1)
                             @if ($item1->training_id == $item->id)
                               <option value="{{$item->id}}" selected>{{$item->name}}</option>
                               @php
                                   $skip = true;
                               @endphp
-                            @endif                            
-                          @endforeach                                   
+                            @endif
+                          @endforeach
                           @if (!$skip)
                             <option value="{{$item->id}}">{{$item->name}}</option>
-                          @endif                                                                                             
+                          @endif
                       @endforeach
                     </select>
                     @error('training_id')
                       <span id="training_id" class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
                       </span>
-                    @enderror                    
+                    @enderror
                   </div>
                 </div>
                 <!-- /.card-body -->
@@ -167,12 +167,12 @@
     $('#peserta_pelatihan').hide()
   }
 
-  $('#role').change((e) => {  
-    if($(e.target).val() == 'admin'){      
+  $('#role').change((e) => {
+    if($(e.target).val() == 'admin'){
       $('#peserta_pelatihan').hide()
     }
 
-    if($(e.target).val() == 'peserta'){      
+    if($(e.target).val() == 'peserta'){
       $('#peserta_pelatihan').show()
     }
   })
